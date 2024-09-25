@@ -41,28 +41,29 @@ namespace Photo_Gallery
                 {
                     if (i > 0)
                     {
-                        var img = new ImageView(this);
-                        int num1 = rnd.Next(1, 14);
-                        char type1 = types[rnd.Next(4)];
-                        img.SetImageResource(Resources.GetIdentifier($"img{num1}{type1}", "drawable", this.PackageName));
-                        img.LayoutParameters = new LinearLayout.LayoutParams(0, 400, 1);
-                        layout.AddView(img);
+                        //add image
+                        GenerateImage(types, layout);
                     }
                     main.AddView(layout);
                     layout = new LinearLayout(this);
                     continue;
                 }
                 //add image
-                var imgv = new ImageView(this);
-                int num = rnd.Next(1, 14);
-                char type = types[rnd.Next(4)];
-                imgv.SetImageResource(base.Resources.GetIdentifier($"img{num}{type}", "drawable", this.PackageName));
-                imgv.LayoutParameters = new LinearLayout.LayoutParams(0, 400, 1);
-                layout.AddView(imgv);
+                GenerateImage(types, layout);
             }
 
             main.AddView(layout);
 
+        }
+
+        private void GenerateImage(char[] types, LinearLayout layout)
+        {
+            var img = new ImageView(this);
+            int num1 = rnd.Next(1, 14);
+            char type1 = types[rnd.Next(4)];
+            img.SetImageResource(Resources.GetIdentifier($"img{num1}{type1}", "drawable", this.PackageName));
+            img.LayoutParameters = new LinearLayout.LayoutParams(0, 400, 1);
+            layout.AddView(img);
         }
     }
 }
